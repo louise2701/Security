@@ -56,28 +56,28 @@ INSERT INTO product VALUES
 (20);
 
 INSERT INTO fruit VALUES 
-(1, 'Apple', 1.50, 'France', 1),
-(2, 'Banana', 2.00, 'Spain', 2),
-(3, 'Orange', 1.00, 'Italy', 3),
-(4, 'Pear', 1.50, 'France', 4),
-(5, 'Pineapple', 2.00, 'Spain', 5),
-(6, 'Strawberry', 1.00, 'Italy', 6),
-(7, 'Cherry', 1.50, 'France', 7),
-(8, 'Grape', 2.00, 'Spain', 8),
-(9, 'Lemon', 1.00, 'Italy', 9),
-(10, 'Watermelon', 1.50, 'France', 10),
-(11, 'Kiwi', 2.00, 'Spain', 11),
-(12, 'Peach', 1.00, 'Italy', 12);
+(1, 'Apple', 1.99, 'France', 1),
+(2, 'Banana', 1.99, 'Spain', 2),
+(3, 'Orange', 1.64, 'Italy', 3),
+(4, 'Pear', 2.69, 'France', 4),
+(5, 'Pineapple', 3.99, 'Spain', 5),
+(6, 'Strawberry', 4.58, 'Italy', 6),
+(7, 'Cherry', 11.99, 'France', 7),
+(8, 'Grape', 6.00, 'Spain', 8),
+(9, 'Lemon', 2.98, 'Italy', 9),
+(10, 'Watermelon', 4.79, 'France', 10),
+(11, 'Kiwi', 2.99, 'Spain', 11),
+(12, 'Peach', 2.99, 'Italy', 12);
 
 INSERT INTO vegetable VALUES 
-(1, 'Carrot', 1.50, 'France', 13),
-(2, 'Cucumber', 2.00, 'Spain', 14),
+(1, 'Carrot', 1.39, 'France', 13),
+(2, 'Cucumber', 1.69, 'Spain', 14),
 (3, 'Tomato', 1.00, 'Italy', 15),
-(4, 'Potato', 1.50, 'France', 16),
-(5, 'Onion', 2.00, 'Spain', 17),
-(6, 'Garlic', 1.00, 'Italy', 18),
-(7, 'Pepper', 1.50, 'France', 19),
-(8, 'Eggplant', 2.00, 'Spain', 20);
+(4, 'Potato', 0.99, 'France', 16),
+(5, 'Onion', 2.69, 'Spain', 17),
+(6, 'Garlic', 4.09, 'Italy', 18),
+(7, 'Pepper',3.99 , 'France', 19),
+(8, 'Eggplant', 4.58, 'Spain', 20);
 
 INSERT INTO order_detail VALUES 
 (1, 2, 10),
