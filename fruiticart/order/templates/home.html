@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('{% static "AI_Generated_Image_2023-12-05_439500702003201.png" %}') center center fixed;
+            background: url('{% static "home.png" %}') center center fixed;
 
             background-size: cover;
         }
@@ -60,7 +60,7 @@
         /* Ajout de l'opacité à l'image */
         body::after {
             content: "";
-            background: url('{% static "AI_Generated_Image_2023-12-05_439500702003201.png" %}') center center fixed;
+            background: url('{% static "home.png" %}') center center fixed;
             background-size: cover;
             opacity: 0.2; /* Ajustez cette valeur pour changer l'opacité de l'image */
             top: 0;
@@ -80,11 +80,18 @@
 
     <section>
         <p>Welcome to FruitiCart, your go-to destination for the freshest fruits and VeggieBalls. Our commitment is to provide you with high-quality, delicious produce that you can conveniently order online. Explore our selection and experience the taste of freshness today!</p>
-        <button class="order-button">Order Now</button>
+        <button class="order-button", id ="order_button">Order Now</button>
     </section>
 
     <footer>
         <p>&copy; 2023 FruitiCart: Fresh Produce at Your Fingertips</p>
     </footer>
+
+    <script>
+        var orderButton = document.getElementById('order_button');
+        orderButton.addEventListener('click', function() {
+            window.location.href = '/order/produces/';
+        });
+    </script>
 </body>
 </html>
