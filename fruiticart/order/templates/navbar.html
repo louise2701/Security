@@ -8,56 +8,70 @@
     {% load static %}
     <style>
         body {
-    margin: 0;
-}
+            margin: 0;
+        }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    background-color: #8CC084;
-    padding: 10px;
-}
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
 
-.logo {
-    height: 70px;
-    margin-right: 10px;
-}
+        .logo {
+            height: 70px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
 
-.nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
+        .nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
 
-.nav li {
-    margin-right: 10px;
-}
+        .nav-link {
+            display: inline-block;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 21px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
 
-.nav-link {
-    display: inline-block;
-    color: #333;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-size: 21px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+            margin-left: 10px;
+            margin-right: 10px;
+        }
 
-.nav-link:hover {
-    background-color: #C1FFC1;
-    color: #333;
-}
+        .account {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 21px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            margin-left: 10px;
+            margin-right: auto;
+        }
+
+        .nav-link:hover,
+        .account:hover {
+            background-color: #C1FFC1;
+            color: #333;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar">
-        <img src="{% static 'logo.jpg' %}" alt="Logo" class="logo">
+        <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
         <ul class="nav">
             <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
             <li><a href="{% url 'produces' %}" class="nav-link">Order Now</a></li>
+            <li><a href="{% static 'catalog.pdf' %}" download class="nav-link">Download our Catalog!</a></li>
+            <li><a href="{% url 'account' %}" class="account">Account</a></li>
         </ul>
     </nav>
 </body>

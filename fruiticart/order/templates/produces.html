@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FruitiCart: Fresh Produce</title>
+    <title>Produces</title>
     {% load static %}
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -42,9 +42,6 @@
 
         footer {
             background-color: #8CC084;
-            color: #333;
-            text-align: center;
-            padding: 1em;
         }
 
         .cart-button-container {
@@ -93,6 +90,7 @@
         }
     </style>
 </head>
+
 <body>
     {% include 'navbar.html' %}
     
@@ -245,11 +243,14 @@
         <button onclick="addToCart()">Add to Cart</button>
     </section>
 
-    <footer>
+    <div class="cart-button-container">
         <button onclick="goToCart()" class="cart-button">
-            <img src="{% static 'cart_logo.jpeg' %}" alt="Cart Logo" class="cart-logo">
-            Go to Cart
+            <img src="{% static 'cart_logo.jpeg' %}" alt="Cart Logo" class="cart-logo">Go to Cart
         </button>
+    </div>
+
+    <footer>
+        {% include 'footer.html' %}
     </footer>
 
     <script>
@@ -306,9 +307,9 @@
         }
 
         function goToCart() {
-
             window.location.href = "/order/order_infos/";
         }
     </script>
 </body>
+
 </html>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FruitiCart: Fresh Produce at Your Fingertips</title>
+    <title>Home</title>
     {% load static %}  
     <style>
         body {
@@ -11,7 +12,6 @@
             margin: 0;
             padding: 0;
             background: url('{% static "home.png" %}') center center fixed;
-
             background-size: cover;
         }
 
@@ -49,20 +49,15 @@
 
         footer {
             background-color:  #A3B992;
-            color: white;
-            text-align: center;
             padding: 1em;
-            position: fixed;
             bottom: 0;
-            width: 100%;
         }
 
-        /* Ajout de l'opacité à l'image */
         body::after {
             content: "";
             background: url('{% static "home.png" %}') center center fixed;
             background-size: cover;
-            opacity: 0.2; /* Ajustez cette valeur pour changer l'opacité de l'image */
+            opacity: 0.2;
             top: 0;
             left: 0;
             bottom: 0;
@@ -86,7 +81,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2023 FruitiCart: Fresh Produce at Your Fingertips</p>
+        {% include 'footer.html' %}
     </footer>
 
     <script>

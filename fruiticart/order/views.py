@@ -27,3 +27,9 @@ def produces(request):
 
 def order_infos(request):
     return render(request, 'order_infos.html')
+
+def account(request):
+    return render(request, 'account.html')
+
+def contact(request):
+    return render(request, 'contact.html')
