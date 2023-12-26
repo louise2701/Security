@@ -6,49 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
     {% load static %}
-    <style>
-        body {
-            margin: 0;
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .logo {
-            height: 70px;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-
-        .nav {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-link {
-            display: inline-block;
-            color: #333;
-            text-decoration: none;
-            padding: 10px 15px;
-            font-size: 21px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, color 0.3s ease;
-
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-
-        .nav-link:hover {
-            background-color: #C1FFC1;
-            color: #333;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'styles/navbar_footer.css' %}">
 </head>
 
 <body>
@@ -64,7 +22,6 @@
                 <li><a href="{% url 'logout' %}" class="nav-link">Log Out</a></li>
             {% else %}
                 <li><a href="{% url 'login' %}" class="nav-link">Log In</a></li>
-                <li><a href="{% url 'signin' %}" class="nav-link">Sign In</a></li>
             {% endif %}
         </ul>
     </nav>

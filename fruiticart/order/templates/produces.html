@@ -6,87 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produces</title>
     {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #8CC084;
-            color: #333;
-            text-align: center;
-            padding: 1em;
-        }
-
-        section {
-            padding: 2em;
-            text-align: center;
-            color: #333;
-        }
-
-        .product {
-            margin-bottom: 20px;
-        }
-
-        .product img {
+        img {
             width: 150px;
             height: auto;
             border-radius: 8px;
         }
-
-        .quantity {
-            width: 50px;
-        }
-
-        footer {
-            background-color: #8CC084;
-        }
-
-        .cart-button-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .product {
+            margin-bottom: 20px;
         }
 
         .cart-logo {
             width: 20px;
             height: auto;
             margin-right: 8px;
-        }
-
-        .cart-button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 20px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .calculate-button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .calculate-button:hover {
-            background-color: #0056b3;
         }
     </style>
 </head>
@@ -95,220 +29,150 @@
     {% include 'navbar.html' %}
     
     <header>
-        <h1>FruitiCart: Fresh Produce</h1>
+        <h1>Fresh produces</h1>
         <p>Select quantity for each fruit and vegetable</p>
     </header>
 
     <section>
-        <div class="product">
-            <img src="{% static 'orange.jpg' %}" alt="Orange">
-            <h2>Orange</h2>
-            <p>Price: 1.64€/kg</p>
-            <label for="orange-quantity">Quantity:</label>
-            <input type="number" id="orange-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'apple.jpg' %}" alt="Apple">
-            <h2>Apple</h2>
-            <p>Price: 1.99€/kg</p>
-            <label for="apple-quantity">Quantity:</label>
-            <input type="number" id="apple-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'banana.jpg' %}" alt="Banana">
-            <h2>Banana</h2>
-            <p>Price: 1.99€/kg</p>
-            <label for="banana-quantity">Quantity:</label>
-            <input type="number" id="banana-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'strawberry.jpg' %}" alt="Strawberry">
-            <h2>Strawberry</h2>
-            <p>Price: 4.58€/kg</p>
-            <label for="strawberry-quantity">Quantity:</label>
-            <input type="number" id="strawberry-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'cherry.jpg' %}" alt="Cherry">
-            <h2>Cherry</h2>
-            <p>Price: 11.99€/kg</p>
-            <label for="cherry-quantity">Quantity:</label>
-            <input type="number" id="cherry-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'pear.jpg' %}" alt="Pear">
-            <h2>Pear</h2>
-            <p>Price: 2.69€/kg</p>
-            <label for="pear-quantity">Quantity:</label>
-            <input type="number" id="pear-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'peach.jpg' %}" alt="Peach">
-            <h2>Peach</h2>
-            <p>Price: 2.99€/kg</p>
-            <label for="peach-quantity">Quantity:</label>
-            <input type="number" id="peach-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'kiwi.jpg' %}" alt="Kiwi">
-            <h2>Kiwi</h2>
-            <p>Price: 2.99€/kg</p>
-            <label for="kiwi-quantity">Quantity:</label>
-            <input type="number" id="kiwi-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'lemon.jpg' %}" alt="Lemon">
-            <h2>Lemon</h2>
-            <p>Price: 2.98€/kg</p>
-            <label for="lemon-quantity">Quantity:</label>
-            <input type="number" id="lemon-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'grape.jpg' %}" alt="Grape">
-            <h2>Grape</h2>
-            <p>Price: 6.00€/kg</p>
-            <label for="grape-quantity">Quantity:</label>
-            <input type="number" id="grape-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'pinneapple.jpg' %}" alt="Pinneapple">
-            <h2>Pineapple</h2>
-            <p>Price: 3.99€ per unit</p>
-            <label for="pineapple-quantity">Quantity:</label>
-            <input type="number" id="pineapple-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'watermelon.jpg' %}" alt="Watermelon">
-            <h2>Watermelon</h2>
-            <p>Price: 4.79€ per unit</p>
-            <label for="watermelon-quantity">Quantity:</label>
-            <input type="number" id="watermelon-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'carrot.jpg' %}" alt="Carrot">
-            <h2>Carrot</h2>
-            <p>Price: 1.39€/kg</p>
-            <label for="carrot-quantity">Quantity:</label>
-            <input type="number" id="carrot-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'tomato.jpg' %}" alt="Tomato">
-            <h2>Tomato</h2>
-            <p>Price: 1.39€/kg</p>
-            <label for="tomato-quantity">Quantity:</label>
-            <input type="number" id="tomato-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'peppers.jpg' %}" alt="Peppers">
-            <h2>Peppers</h2>
-            <p>Price: 3.99€/kg</p>
-            <label for="peppers-quantity">Quantity:</label>
-            <input type="number" id="peppers-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'cucumber.jpg' %}" alt="Cucumber">
-            <h2>Cucumber</h2>
-            <p>Price: 1.69 per unit</p>
-            <label for="cucumber-quantity">Quantity:</label>
-            <input type="number" id="cucumber-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'potato.jpg' %}" alt="Potato">
-            <h2>Potato</h2>
-            <p>Price: 0.99€/kg</p>
-            <label for="potato-quantity">Quantity:</label>
-            <input type="number" id="potato-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'onion.jpg' %}" alt="Onion">
-            <h2>Onion</h2>
-            <p>Price: 2.69€/kg</p>
-            <label for="onion-quantity">Quantity:</label>
-            <input type="number" id="onion-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'garlic.jpg' %}" alt="Garlic">
-            <h2>Garlic</h2>
-            <p>Price: 4.09€/500g</p>
-            <label for="garlic-quantity">Quantity:</label>
-            <input type="number" id="garlic-quantity" class="quantity" value="0" min="0">
-        </div>
-        <div class="product">
-            <img src="{% static 'eggplant.jpg' %}" alt="Eggplant">
-            <h2>Eggplant</h2>
-            <p>Price: 4.58€/kg</p>
-            <label for="eggplant-quantity">Quantity:</label>
-            <input type="number" id="eggplant-quantity" class="quantity" value="0" min="0">
-        </div>
-        <button onclick="addToCart()">Add to Cart</button>
+        <!-- placeholder for the items, generated at the loading -->
     </section>
-
-    <div class="cart-button-container">
-        <button onclick="goToCart()" class="cart-button">
-            <img src="{% static 'cart_logo.jpeg' %}" alt="Cart Logo" class="cart-logo">Go to Cart
-        </button>
-    </div>
 
     <footer>
         {% include 'footer.html' %}
     </footer>
 
-    <script>
-        function addToCart() {
-            // save the quantities in the local storage
-            var orangeQuantity = parseInt(document.getElementById("orange-quantity").value) || 0;
-            var appleQuantity = parseInt(document.getElementById("apple-quantity").value) || 0;
-            var bananaQuantity = parseInt(document.getElementById("banana-quantity").value) || 0;
-            var strawberryQuantity = parseInt(document.getElementById("strawberry-quantity").value) || 0;
-            var carrotQuantity = parseInt(document.getElementById("carrot-quantity").value) || 0;
-            var tomatoQuantity = parseInt(document.getElementById("tomato-quantity").value) || 0;
-            var peppersQuantity = parseInt(document.getElementById("peppers-quantity").value) || 0;
-            var pearQuantity = parseInt(document.getElementById("pear-quantity").value) || 0;
-            var grapeQuantity = parseInt(document.getElementById("grape-quantity").value) || 0;
-            var kiwiQuantity = parseInt(document.getElementById("kiwi-quantity").value) || 0;
-            var cherryQuantity = parseInt(document.getElementById("cherry-quantity").value) || 0;
-            var peachQuantity = parseInt(document.getElementById("peach-quantity").value) || 0;
-            var watermelonQuantity = parseInt(document.getElementById("watermelon-quantity").value) || 0;
-            var lemonQuantity = parseInt(document.getElementById("lemon-quantity").value) || 0;
-            var pineappleQuantity = parseInt(document.getElementById("pineapple-quantity").value) || 0;
-            var onionQuantity = parseInt(document.getElementById("onion-quantity").value) || 0;
-            var garlicQuantity = parseInt(document.getElementById("garlic-quantity").value) || 0;
-            var eggplantQuantity = parseInt(document.getElementById("eggplant-quantity").value) || 0;
-            var potatoQuantity = parseInt(document.getElementById("potato-quantity").value) || 0;
-            var cucumberQuantity = parseInt(document.getElementById("cucumber-quantity").value) || 0;
-
-            var cartItems = {
-                "orange": orangeQuantity,
-                "apple": appleQuantity,
-                "banana": bananaQuantity,
-                "strawberry": strawberryQuantity,
-                "cherry": cherryQuantity,
-                "kiwi": kiwiQuantity,
-                "pear": pearQuantity,
-                "lemon": lemonQuantity,
-                "grape": grapeQuantity,
-                "peach": peachQuantity,
-                "watermelon": watermelonQuantity,
-                "pineapple": pineappleQuantity,
-                "carrot": carrotQuantity,
-                "tomato": tomatoQuantity,
-                "onion": onionQuantity,
-                "garlic": garlicQuantity,
-                "eggplant": eggplantQuantity,
-                "potato": potatoQuantity,
-                "cucumber": cucumberQuantity,
-                "peppers": peppersQuantity
-
-            };
-
-            localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-            alert("Items added to the cart!");
+    <script id="config" type="application/json">
+        {
+          "staticBaseUrl": "{% static '' %}"
         }
+    </script>
+
+    <script>
+        var config = JSON.parse(document.getElementById('config').textContent);
+        var staticBaseUrl = config.staticBaseUrl;
 
         function goToCart() {
+            // update quantities
+            updateQuantities();
+
+            // check that at least one item is selected
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || {};
+            var cartItemsArray = Object.values(cartItems);
+            var cartItemsSum = cartItemsArray.reduce((a, b) => a + b, 0);
+
+            if (cartItemsSum === 0) {
+                alert("Please select at least one item");
+                return;
+            }
+            
             window.location.href = "/order/order_infos/";
         }
+
+        function updateQuantities() {
+            var products = document.querySelectorAll(".product");
+
+            var cartItems = {};
+
+            products.forEach(function (product) {
+                var productId = product.id;
+                var quantity = parseInt(document.getElementById(productId + "-quantity").value) || 0;
+
+                if (quantity > 0) {
+                    cartItems[productId] = quantity;
+                }
+            });
+
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        }
+
+        function initPage() {
+            // initialize cart
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || {};
+        
+            // initialize items
+            var products = [
+                { id: "orange", name: "Orange", price: "1.64€/kg" },
+                { id: "apple", name: "Apple", price: "1.99€/kg" },
+                { id: "banana", name: "Banana", price: "1.99€/kg" },
+                { id: "strawberry", name: "Strawberry", price: "4.58€/kg" },
+                { id: "cherry", name: "Cherry", price: "11.99€/kg" },
+                { id: "pear", name: "Pear", price: "2.69€/kg" },
+                { id: "peach", name: "Peach", price: "2.99€/kg" },
+                { id: "kiwi", name: "Kiwi", price: "2.99€/kg" },
+                { id: "lemon", name: "Lemon", price: "2.98€/kg" },
+                { id: "grape", name: "Grape", price: "6.00€/kg" },
+                { id: "pineapple", name: "Pineapple", price: "3.99€ per unit" },
+                { id: "watermelon", name: "Watermelon", price: "4.79€ per unit" },
+                { id: "carrot", name: "Carrot", price: "1.39€/kg" },
+                { id: "tomato", name: "Tomato", price: "1.39€/kg" },
+                { id: "peppers", name: "Peppers", price: "3.99€/kg" },
+                { id: "cucumber", name: "Cucumber", price: "1.69 per unit" },
+                { id: "potato", name: "Potato", price: "0.99€/kg" },
+                { id: "onion", name: "Onion", price: "2.69€/kg" },
+                { id: "garlic", name: "Garlic", price: "4.09€/500g" },
+                { id: "eggplant", name: "Eggplant", price: "4.58€/kg" }
+            ];
+
+            // loop through items and create elements
+            for (var i = 0; i < products.length; i++) {
+                var product = products[i];
+                var productId = product.id;
+
+                // create product div
+                var productDiv = document.createElement("div");
+                productDiv.classList.add("product");
+                productDiv.id = productId;
+
+                // create product image
+                var productImage = document.createElement("img");
+                productImage.src = staticBaseUrl + productId + ".jpg";
+                productImage.alt = product.name;
+                productDiv.appendChild(productImage);
+
+                // create product name
+                var productName = document.createElement("h2");
+                productName.textContent = product.name;
+                productDiv.appendChild(productName);
+
+                // create product price
+                var productPrice = document.createElement("p");
+                productPrice.textContent = "Price: " + product.price;
+                productDiv.appendChild(productPrice);
+
+                // create product quantity
+                var quantityLabel = document.createElement("label");
+                quantityLabel.setAttribute("for", productId + "-quantity");
+                quantityLabel.textContent = "Quantity:";
+                productDiv.appendChild(quantityLabel);
+
+                var quantityInput = document.createElement("input");
+                quantityInput.setAttribute("type", "number");
+                quantityInput.setAttribute("id", productId + "-quantity");
+                quantityInput.classList.add("quantity");
+                quantityInput.setAttribute("value", "0");
+                quantityInput.setAttribute("min", "0");
+                productDiv.appendChild(quantityInput);
+
+                // add product div to section
+                document.querySelector("section").appendChild(productDiv);
+            }
+
+            // add submit-button with its image
+            var submitButton = document.createElement("button");
+            submitButton.classList.add("submit-button");
+            submitButton.textContent = "Go to cart";
+            submitButton.onclick = goToCart;
+
+            var cartLogo = document.createElement("img");
+            cartLogo.src = "{% static 'cart_logo.jpeg' %}";
+            cartLogo.alt = "Cart Logo";
+            cartLogo.classList.add("cart-logo");
+
+            submitButton.prepend(cartLogo);
+            document.querySelector("section").appendChild(submitButton);
+        }
+
+        window.onload = initPage;
     </script>
 </body>
 
