@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, produces, order_infos, confirm_order, login, login_submit, signin, signin_submit, account, modify_user_info, change_password, logout, contact, contact_submit
+from .views import home, produces, order_infos, confirmation, confirm_order, login, login_submit, signin, signin_submit, account, modify_user_info, change_password, logout, contact, contact_submit
 
 urlpatterns = [
     path('home/', home, name='home'),
@@ -8,6 +8,8 @@ urlpatterns = [
 
     path('order_infos/', order_infos, name='order_infos'),
     path('order_infos/confirm_order/', confirm_order, name='confirm_order'),
+
+    path('confirmation/', confirmation, name='confirmation'),
 
     path('login/', login, name='login'),
     path('login/login_submit/', login_submit, name='login_submit'),

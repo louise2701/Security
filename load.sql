@@ -1,12 +1,12 @@
 -- Active: 1701801198772@@127.0.0.1@3306@fruiticart
 USE fruiticart;
 
-INSERT INTO fidelity VALUES 
+INSERT INTO order_fidelity VALUES 
 ('Gold', 0.1),
 ('Silver', 0.05),
 ('Without', 0);
 
-INSERT INTO `client` VALUES 
+INSERT INTO `order_client` VALUES 
 ('test', 'test', 'testFName', 'testLName', '0123456789', 'testAddress', '12345', '1234567891234567', 'Gold'),
 ('john.doe@email.com', 'motdepasse1', 'John', 'Doe', '1234567890', '123 Rue des Fleurs', '75001', '1111222233334444', 'Gold'),
 ('jane.smith@email.com', 'motdepasse2', 'Jane', 'Smith', '9876543210', '456 Avenue des Étoiles', '75002', '2222333344445555', 'Silver'),
@@ -19,7 +19,7 @@ INSERT INTO `client` VALUES
 ('sophia.thomas@email.com', 'motdepasse9', 'Sophia', 'Thomas', '2221110000', '606 Rue des Champs', '75009', '9999000011112222', 'Without'),
 ('liam.jackson@email.com', 'motdepasse10', 'Liam', 'Jackson', '8887776666', '707 Avenue des Plaines', '75010', '0000111122223333', 'Without');
 
-INSERT INTO `order` VALUES 
+INSERT INTO `order_order` VALUES 
 (1, '2021-01-01', '2021-01-03', '123 Rue des Fleurs', '75001', 'Delivered', 10.70, 'john.doe@email.com'),
 (2, '2023-01-01', '2023-01-05', '123 Rue des Fleurs', '75001', 'Delivered', 14.32, 'john.doe@email.com'),
 (3, '2022-04-28', '2022-04-30', '456 Avenue des Étoiles', '75002', 'Delivered', 12.50, 'jane.smith@email.com'),
@@ -33,7 +33,7 @@ INSERT INTO `order` VALUES
 (11, '2023-07-17', '2023-07-19', '606 Rue des Champs', '75009', 'Delivered', 21.01, 'sophia.thomas@email.com'),
 (12, '2023-08-18', '2023-08-20', '707 Avenue des Plaines', '75010', 'Delivered', 10.00, 'liam.jackson@email.com');
 
-INSERT INTO product VALUES 
+INSERT INTO order_product VALUES 
 (1),
 (2),
 (3),
@@ -55,7 +55,7 @@ INSERT INTO product VALUES
 (19),
 (20);
 
-INSERT INTO fruit VALUES 
+INSERT INTO order_fruit VALUES 
 (1, 'Apple', 1.99, 'France', 1),
 (2, 'Banana', 1.99, 'Spain', 2),
 (3, 'Orange', 1.64, 'Italy', 3),
@@ -69,7 +69,7 @@ INSERT INTO fruit VALUES
 (11, 'Kiwi', 2.99, 'Spain', 11),
 (12, 'Peach', 2.99, 'Italy', 12);
 
-INSERT INTO vegetable VALUES 
+INSERT INTO order_vegetable VALUES 
 (1, 'Carrot', 1.39, 'France', 13),
 (2, 'Cucumber', 1.69, 'Spain', 14),
 (3, 'Tomato', 1.00, 'Italy', 15),
@@ -79,7 +79,7 @@ INSERT INTO vegetable VALUES
 (7, 'Pepper',3.99 , 'France', 19),
 (8, 'Eggplant', 4.58, 'Spain', 20);
 
-INSERT INTO order_detail VALUES 
+INSERT INTO order_orderdetail VALUES 
 (1, 2, 10),
 (1, 11, 5),
 (2, 19, 7),
@@ -106,7 +106,7 @@ INSERT INTO order_detail VALUES
 (12, 3, 5),
 (12, 4, 5);
 
-INSERT INTO warehouse VALUES 
+INSERT INTO order_warehouse VALUES 
 (1, '606 Rue des Champs', '75009', 'North'),
 (2, '707 Avenue des Plaines', '75010', 'North'),
 (3, '808 Boulevard des Vagues', '75011', 'North'),
