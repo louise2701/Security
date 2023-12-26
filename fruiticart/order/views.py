@@ -14,39 +14,41 @@ def produces(request):
     fruits = Fruit.objects.all()
     vegetables = Vegetable.objects.all()
 
+    # merge the products
+    products = []
+    for fruit in fruits:
+        products.append(fruit)
+    for vegetable in vegetables:
+        products.append(vegetable)
+
     # render the page with the products
-    return render(request, 'produces.html', {'user_email': user_email, 'fruits': fruits, 'vegetables': vegetables})
+    return render(request, 'produces.html', {'user_email': user_email, 'products': products})
 
 def order_infos(request):
     user_email = request.COOKIES.get('email', None)
 
-    # get the prices for the products
+    # get all the products via the model 
     fruits = Fruit.objects.all()
     vegetables = Vegetable.objects.all()
 
-    fruits_prices = {}
+    # merge the products
+    product_prices = {}
     for fruit in fruits:
-        fruits_prices[fruit.name] = float(fruit.price)
-    
-    vegetables_prices = {}
+        product_prices[fruit.name] = float(fruit.price)
     for vegetable in vegetables:
-        vegetables_prices[vegetable.name] = float(vegetable.price)
+        product_prices[vegetable.name] = float(vegetable.price)
 
     # if the user is logged, get the user info
     if user_email is not None:
         # get the user info via the model
         user_info = Client.objects.get(email=user_email)
-        return render(request, 'order_infos.html', {'user_email': user_email, 'fruits_prices': fruits_prices, 'vegetables_prices': vegetables_prices, 'user_info': user_info})
+        return render(request, 'order_infos.html', {'user_email': user_email, 'user_info': user_info, 'product_prices': product_prices})
     else:
-        return render(request, 'order_infos.html', {'user_email': user_email, 'fruits_prices': fruits_prices, 'vegetables_prices': vegetables_prices})
-
-def confirm_order(request):
-    user_email = request.COOKIES.get('email', None)
-    # do a post request to confirm the order
-    return render(request, 'order_infos.html', {'user_email': user_email})
+        return render(request, 'order_infos.html', {'user_email': user_email, 'product_prices': product_prices})
 
 def confirmation(request):
     user_email = request.COOKIES.get('email', None)
+    
     return render(request, 'confirmation.html', {'user_email': user_email})
 
 def login(request):

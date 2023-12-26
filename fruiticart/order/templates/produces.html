@@ -34,7 +34,20 @@
     </header>
 
     <section>
-        <!-- placeholder for the items, generated at the loading -->
+        {% for product in products %}
+            <div class="product" id="{{ product.name|lower }}">
+                <img src="{% static product.name|lower ~ %}.jpg" alt="{{ product.name|lower }}" />
+                <h2>{{ product.name }}</h2>
+                <p>Price: {{ product.price }}€/kg</p>
+                <label for="{{ product.name|lower }}-quantity">Quantity:</label>
+                <input type="number" id="{{ product.name|lower }}-quantity" class="quantity" value="0" min="0">
+            </div>
+        {% endfor %}
+
+        <button class="submit-button" onclick="goToCart()">
+            <img src="{% static 'cart_logo.jpeg' %}" alt="Cart Logo" class="cart-logo">
+            Go to cart
+        </button>
     </section>
 
     <footer>
@@ -75,7 +88,7 @@
 
             products.forEach(function (product) {
                 var productId = product.id;
-                var quantity = parseInt(document.getElementById(productId + "-quantity").value) || 0;
+                var quantity = parseInt(document.getElementById(productId.toLowerCase() + "-quantity").value) || 0;
 
                 if (quantity > 0) {
                     cartItems[productId] = quantity;
@@ -84,99 +97,6 @@
 
             localStorage.setItem("cartItems", JSON.stringify(cartItems));
         }
-
-        function initProducts() {
-            // initialize items
-            var products = [];
-
-            // add fruits to the products array
-            {% for fruit in fruits %}
-                products.push({
-                    id: "{{ fruit.id }}",
-                    name: "{{ fruit.name }}",
-                    price: "{{ fruit.price }}€/kg",
-                });
-            {% endfor %}
-
-            // add vegetables to the products array
-            {% for vegetable in vegetables %}
-                products.push({
-                    id: "{{ vegetable.id }}",
-                    name: "{{ vegetable.name }}",
-                    price: "{{ vegetable.price }}€/kg",
-                });
-            {% endfor %}
-
-            return products;
-        }
-
-        function initPage() {
-            // initialize cart
-            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || {};
-        
-            // initialize items
-            products = initProducts();
-
-            // loop through items and create elements
-            for (var i = 0; i < products.length; i++) {
-                var product = products[i];
-                var productId = product.name;
-
-                // create product div
-                var productDiv = document.createElement("div");
-                productDiv.classList.add("product");
-                productDiv.id = productId;
-
-                // create product image
-                var productImage = document.createElement("img");
-                productImage.src = staticBaseUrl + productId + ".jpg";
-                productImage.alt = product.name;
-                productDiv.appendChild(productImage);
-
-                // create product name
-                var productName = document.createElement("h2");
-                productName.textContent = product.name;
-                productDiv.appendChild(productName);
-
-                // create product price
-                var productPrice = document.createElement("p");
-                productPrice.textContent = "Price: " + product.price;
-                productDiv.appendChild(productPrice);
-
-                // create product quantity
-                var quantityLabel = document.createElement("label");
-                quantityLabel.setAttribute("for", productId + "-quantity");
-                quantityLabel.textContent = "Quantity:";
-                productDiv.appendChild(quantityLabel);
-
-                var quantityInput = document.createElement("input");
-                quantityInput.setAttribute("type", "number");
-                quantityInput.setAttribute("id", productId + "-quantity");
-                quantityInput.classList.add("quantity");
-                quantityInput.setAttribute("value", "0");
-                quantityInput.setAttribute("min", "0");
-                productDiv.appendChild(quantityInput);
-
-                // add product div to section
-                document.querySelector("section").appendChild(productDiv);
-            }
-
-            // add submit-button with its image
-            var submitButton = document.createElement("button");
-            submitButton.classList.add("submit-button");
-            submitButton.textContent = "Go to cart";
-            submitButton.onclick = goToCart;
-
-            var cartLogo = document.createElement("img");
-            cartLogo.src = "{% static 'cart_logo.jpeg' %}";
-            cartLogo.alt = "Cart Logo";
-            cartLogo.classList.add("cart-logo");
-
-            submitButton.prepend(cartLogo);
-            document.querySelector("section").appendChild(submitButton);
-        }
-
-        window.onload = initPage;
     </script>
 </body>
 

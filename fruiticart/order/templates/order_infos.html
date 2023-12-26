@@ -67,7 +67,7 @@
     <section>
         <div>
             <h2>Your informations</h2>
-            <form action="{% url 'confirm_order' %}" method="post">
+            <form action="{% url 'confirmation' %}" method="post">
                 {% csrf_token %}
                 {% if not user_info %}
                 <label for="first_name">First name:</label>
@@ -157,14 +157,8 @@
         function getPrices() {
             var prices = {};
 
-            {% for fruit_name, fruit_price in fruits_prices.items %}
-                prices["{{ fruit_name }}"] = "{{ fruit_price }}";
-            {% endfor %}
-
-            console.log(prices);
-            
-            {% for vegetable_name, vegetable_price in vegetables_prices.items %}
-                prices["{{ vegetable_name }}"] = "{{ vegetable_price }}";
+            {% for product_name, product_price in product_prices.items %}
+                prices["{{ product_name }}"] = "{{ product_price }}";
             {% endfor %}
 
             return prices;
