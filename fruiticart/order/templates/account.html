@@ -80,17 +80,17 @@
             <div class="order-history">
                 <h2>Order history</h2>
                 {% if user_orders %}
-                    <ul>
+                    <div>
                         {% for order in user_orders %}
-                            <li>
+                            <div>
                                 <strong>Order ID:</strong> {{ order.order_id }}<br>
                                 <strong>Order date:</strong> {{ order.order_date }}<br>
                                 <strong>Status:</strong> {{ order.status }}<br>
-                                <strong>Total price:</strong> {{ order.total_price }}<br>
-                            </li>
+                                <strong>Total price:</strong> ${{ order.total_price }}<br>
+                            </div>
                             <br>
                         {% endfor %}
-                    </ul>
+                        </div>
                 {% else %}
                     <p>No previous orders found.</p>
                 {% endif %}
