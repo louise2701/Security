@@ -67,60 +67,38 @@
     <section>
         <div>
             <h2>Your informations</h2>
-            <form action="{% url 'confirmation' %}" method="post">
+            <form action="{% url 'confirm_order' %}" method="post">
                 {% csrf_token %}
-                {% if not user_info %}
-                <label for="first_name">First name:</label>
-                <input type="text" id="first_name" name="first_name" required>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" value="{{ user_info.email }}" readonly style="background-color: #f0f0f0;">
 
-                <label for="last_name">Last lame:</label>
-                <input type="text" id="last_name" name="last_name" required>
+                <label for="delivery_address">Delivery address:</label>
+                <input type="text" id="delivery_address" name="delivery_address" value="{{ user_info.address }}" required>
 
-                <label for="phone_number">Phone number:</label>
-                <input type="tel" id="phone_number" name="phone_number" required>
-
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required>
-
-                <label for="postal_code">Postal code:</label>
-                <input type="text" id="postal_code" name="postal_code" required>
+                <label for="delivery_postal_code">Delivery postal code:</label>
+                <input type="text" id="delivery_postal_code" name="delivery_postal_code" value="{{ user_info.postal_code }}" required>
 
                 <label for="credit_card">Credit card:</label>
-                <input type="text" id="credit_card" name="credit_card" required>
-                {% else %}
-                <label for="first_name">First name:</label>
-                <input type="text" id="first_name" name="first_name" value="{{ user_info.first_name }}" required>
+                <input type="text" id="credit_card" name="credit_card" value="{{ user_info.registered_credit_card }}" required>
 
-                <label for="last_name">Last lame:</label>
-                <input type="text" id="last_name" name="last_name" value="{{ user_info.last_name }}" required>
-
-                <label for="phone_number">Phone number:</label>
-                <input type="tel" id="phone_number" name="phone_number" value="{{ user_info.phone_number }}" required>
-
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" value="{{ user_info.address }}" required>
-
-                <label for="postal_code">Postal code:</label>
-                <input type="text" id="postal_code" name="postal_code" value="{{ user_info.postal_code }}" required>
-
-                <label for="credit_card">Credit card:</label>
-                <input type="text" id="credit_card" name="credit_card" value="{{ user_info.credit_card }}" required>
-                {% endif %}
-
-                <label for="delivery-option">Delivery options:</label>
-                <select id="delivery-option">
+                <label for="delivery_option">Delivery options:</label>
+                <select id="delivery_option" name="delivery_option">
                     <option value="standard">Standard delivery</option>
-                    <option value="express">Express delivery</option>
+                    <option value="express">Express delivery (+5$)</option>
                 </select>
 
-                <button type="submit" class="submit-button" onclick="confirmOrder()">Confirm order</button>
+                <input type="hidden" name="cartItems" id="cartItems" value="">
+
+                <button type="submit" name="confirm" class="submit-button">Confirm order</button>
+            </form>
         </div>
     </section>
 
     <section class="cart-section">
         <h2>Shopping cart</h2>
-        <label id="order_id">Order ID: #{{ order_id }}</label>
-        <div id="cart-items"></div>
+        <div id="cart-items">
+            <!-- placeholder for cart items -->
+        </div>
         <div id="total-price">Total price: $0.00</div>
     </section>
 
@@ -129,10 +107,32 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || {};
-            updateCartItems(cartItems);
-            updateTotalPrice();
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || {};
+
+        var totalPrice = 0;
+
+        // check which delivery option is selected
+        function checkDeliveryOption() {
+            var deliveryOption = document.getElementById("delivery_option").value;
+
+            if (deliveryOption === "express") {
+                totalPrice += 5;
+            } else {
+                totalPrice -= 5;
+            }
+        }
+
+        function displayPrice() {
+            document.getElementById("total-price").textContent = "Total Price: $" + totalPrice.toFixed(2);
+        }
+
+        // event for when the delivery option is changed
+        document.getElementById("delivery_option").addEventListener("change", function () {
+            // check which delivery option is selected
+            checkDeliveryOption();
+
+            // refresh the total price
+            displayPrice();
         });
 
         function updateCartItems(cartItems) {
@@ -140,82 +140,74 @@
             cartItemsContainer.innerHTML = "";
 
             for (var item in cartItems) {
-                if (cartItems[item] > 0) {
-                    var cartItemElement = document.createElement("div");
-                    cartItemElement.className = "cart-item";
+                var cartItemElement = document.createElement("div");
+
+                cartItemElement.className = "cart-item";
+                cartItemElement.innerHTML =
+                    "<div class='item-name'>" + cartItems[item].name + " (" + cartItems[item].price + "$/kg)" + "</div>" +
+                    "<div class='item-quantity'>" + cartItems[item].quantity + "</div>" +
+                    "<div class='item-action'><button onclick=\"removeCartItem('" + cartItems[item].product_id + "')\">Remove</button></div>";
     
-                    cartItemElement.innerHTML =
-                        "<div class='item-name'>" + item + "</div>" +
-                        "<div class='item-quantity'>" + cartItems[item] + "</div>" +
-                        "<div class='item-action'><button onclick=\"removeCartItem('" + item + "')\">Remove</button></div>";
-    
-                    cartItemsContainer.appendChild(cartItemElement);
-                }
+                cartItemsContainer.appendChild(cartItemElement);
             }
-        }
 
-        function getPrices() {
-            var prices = {};
-
-            {% for product_name, product_price in product_prices.items %}
-                prices["{{ product_name }}"] = "{{ product_price }}";
-            {% endfor %}
-
-            return prices;
+            // update the hidden input with the cart items
+            document.getElementById("cartItems").value = JSON.stringify(cartItems);
         }
 
         function updateTotalPrice() {
-            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || {};
-
-            var prices = getPrices();
-
-            var totalPrice = 0;
-
             for (var item in cartItems) {
-                totalPrice += cartItems[item] * prices[item];
+                totalPrice += cartItems[item].quantity * cartItems[item].price;
             }
 
-            document.getElementById("total-price").textContent = "Total Price: $" + totalPrice.toFixed(2);
+            // refresh the total price
+            displayPrice();
         }
 
-        function confirmOrder() {
-            var firstName = document.getElementById("first_name").value;
-            var lastName = document.getElementById("last_name").value;
-            var phoneNumber = document.getElementById("phone_number").value;
-            var address = document.getElementById("address").value;
-            var postalCode = document.getElementById("postal_code").value;
-            var creditCard = document.getElementById("credit_card").value;
-            var deliveryOption = document.getElementById("delivery-option").value;
+        document.addEventListener("DOMContentLoaded", function () {
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || {};
+            
+            // get the items from the cart and display them
+            updateCartItems(cartItems);
 
-            var orderSummary = "Order Summary:\n\n" +
-                "First name: " + firstName + "\n" +
-                "Last name: " + lastName + "\n" +
-                "Phone number: " + phoneNumber + "\n" +
-                "Address: " + address + "\n" +
-                "Postal code: " + postalCode + "\n" +
-                "Credit card: " + creditCard + "\n\n" +
-                "Total Price: $" + document.getElementById("total-price").textContent.split("$")[1];
+            // get the prices of the items and display the total price
+            updateTotalPrice();
+        });
 
-            alert(orderSummary);
+        // check if there are still items in the cart
+        function checkCartItems() {
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || {};
+            var cartItemsArray = Object.values(cartItems);
+            var cartItemsSum = cartItemsArray.reduce((a, b) => a + b, 0);
 
-            localStorage.removeItem("cartItems");
-
-            window.location.href = "/order/home/";
+            if (cartItemsSum === 0) {
+                alert("There's no more items in your cart, going back to the produces page");
+                window.location.href = "/order/produces/";
+                return;
+            }
         }
 
         function removeCartItem(item) {
-            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || {};
-
             if (cartItems[item]) {
-                cartItems[item]--;
+                cartItems[item].quantity--;
 
-                if (cartItems[item] === 0) {
+                if (cartItems[item].quantity === 0) {
                     delete cartItems[item];
                 }
 
                 localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+                // get the items from the cart and display them
                 updateCartItems(cartItems);
+
+                // reset the total price
+                totalPrice = 0;
+
+                // get the prices of the items and display the total price
                 updateTotalPrice();
+                
+                // check if there are still items in the cart
+                checkCartItems();
             }
         }
     </script>

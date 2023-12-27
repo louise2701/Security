@@ -13,6 +13,7 @@
             height: auto;
             border-radius: 8px;
         }
+
         .product {
             margin-bottom: 20px;
         }
@@ -34,11 +35,18 @@
     </header>
 
     <section>
+        <button class="submit-button" onclick="goToCart()">
+            <img src="{% static 'cart_logo.jpeg' %}" alt="Cart Logo" class="cart-logo">
+            Go to cart
+        </button>
+
+        <br></br>
+        
         {% for product in products %}
-            <div class="product" id="{{ product.name|lower }}">
+            <div class="product" id="{{ product.product_id }}">
                 <img src="{% static product.name|lower ~ %}.jpg" alt="{{ product.name|lower }}" />
                 <h2>{{ product.name }}</h2>
-                <p>Price: {{ product.price }}€/kg</p>
+                <p id="{{ product.name|lower }}-price">Price: {{ product.price }}$/kg</p>
                 <label for="{{ product.name|lower }}-quantity">Quantity:</label>
                 <input type="number" id="{{ product.name|lower }}-quantity" class="quantity" value="0" min="0">
             </div>
@@ -87,11 +95,19 @@
             var cartItems = {};
 
             products.forEach(function (product) {
-                var productId = product.id;
-                var quantity = parseInt(document.getElementById(productId.toLowerCase() + "-quantity").value) || 0;
+                var product_id = product.id;
+                console.log(product_id);
+                var name = product.querySelector("h2").textContent.toLowerCase();
+                var quantity = parseInt(document.getElementById(name.toLowerCase() + "-quantity").value) || 0;
+                var price = parseFloat(document.getElementById(name.toLowerCase() + "-price").textContent.split(" ")[1]) || 0;
 
                 if (quantity > 0) {
-                    cartItems[productId] = quantity;
+                    cartItems[product_id] = {
+                        product_id: product_id,
+                        name: name,
+                        quantity: quantity,
+                        price: price
+                    }
                 }
             });
 

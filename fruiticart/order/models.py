@@ -8,7 +8,7 @@ class Client(models.Model):
     phone_number = models.CharField(max_length=10)
     address = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=5)
-    credit_card = models.CharField(max_length=16)
+    registered_credit_card = models.CharField(max_length=16)
 
 class Contact(models.Model):
     contact_id = models.AutoField(primary_key=True)
@@ -20,10 +20,12 @@ class Order(models.Model):
     order_id = models.AutoField(primary_key=True)
     order_date = models.DateField()
     delivery_date = models.DateField()
+    delivery_option = models.CharField(max_length=8, choices=[('Express', 'Express'), ('Standard', 'Standard')])
     delivery_address = models.CharField(max_length=50)
     delivery_postal_code = models.CharField(max_length=5)
     status = models.CharField(max_length=10, choices=[('Pending', 'Pending'), ('Confirmed', 'Confirmed'), ('In transit', 'In transit'), ('Delivered', 'Delivered'), ('Cancelled', 'Cancelled')])
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    credit_card = models.CharField(max_length=16)
     email = models.ForeignKey(Client, on_delete=models.CASCADE)
 
 class Product(models.Model):

@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS order_client (
     phone_number VARCHAR(10),
     `address` VARCHAR(50),
     postal_code VARCHAR(5),
-    credit_card VARCHAR(16),
+    registered_credit_card VARCHAR(16),
 );
 
 CREATE TABLE IF NOT EXISTS order_contact (
@@ -34,10 +34,12 @@ CREATE TABLE IF NOT EXISTS order_order (
     order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     order_date DATE,
     delivery_date DATE,
+    delivery_option ENUM('Standard','Express'),
     delivery_address VARCHAR(50),
     delivery_postal_code VARCHAR(5),
     `status` ENUM('Pending','Confirmed','In transit','Delivered','Cancelled'),
     total_price DECIMAL(10,2),
+    credit_card VARCHAR(16),
     email_id VARCHAR(50) NOT NULL
 );
 
