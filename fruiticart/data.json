@@ -1,0 +1,348 @@
+{
+    "order_client": [
+        {
+          "email": "test@test",
+          "password": "test",
+          "first_name": "testFName",
+          "last_name": "testLName",
+          "phone_number": "0123456789",
+          "address": "testAddress",
+          "postal_code": "12345",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "john.doe@email.com",
+          "password": "motdepasse1",
+          "first_name": "John",
+          "last_name": "Doe",
+          "phone_number": "1234567890",
+          "address": "123 Rue des Fleurs",
+          "postal_code": "75001",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "jane.smith@email.com",
+          "password": "motdepasse2",
+          "first_name": "Jane",
+          "last_name": "Smith",
+          "phone_number": "9876543210",
+          "address": "456 Avenue des Étoiles",
+          "postal_code": "75002",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "alice.johnson@email.com",
+          "password": "motdepasse3",
+          "first_name": "Alice",
+          "last_name": "Johnson",
+          "phone_number": "5556667777",
+          "address": "789 Boulevard du Soleil",
+          "postal_code": "75003",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "bob.williams@email.com",
+          "password": "motdepasse4",
+          "first_name": "Bob",
+          "last_name": "Williams",
+          "phone_number": "3332221111",
+          "address": "1010 Rue de la Lune",
+          "postal_code": "75004",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "emma.martin@email.com",
+          "password": "motdepasse5",
+          "first_name": "Emma",
+          "last_name": "Martin",
+          "phone_number": "9998887777",
+          "address": "2020 Avenue des Nuages",
+          "postal_code": "75005",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "charlie.brown@email.com",
+          "password": "motdepasse6",
+          "first_name": "Charlie",
+          "last_name": "Brown",
+          "phone_number": "1110009999",
+          "address": "303 Rue des Montagnes",
+          "postal_code": "75006",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "olivia.white@email.com",
+          "password": "motdepasse7",
+          "first_name": "Olivia",
+          "last_name": "White",
+          "phone_number": "7776665555",
+          "address": "404 Avenue des Rivières",
+          "postal_code": "75007",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "michael.davis@email.com",
+          "password": "motdepasse8",
+          "first_name": "Michael",
+          "last_name": "Davis",
+          "phone_number": "4443332222",
+          "address": "505 Boulevard des Forêts",
+          "postal_code": "75008",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "sophia.thomas@email.com",
+          "password": "motdepasse9",
+          "first_name": "Sophia",
+          "last_name": "Thomas",
+          "phone_number": "2221110000",
+          "address": "606 Rue des Champs",
+          "postal_code": "75009",
+          "registered_credit_card": "1234567891234567"
+        },
+        {
+          "email": "liam.jackson@email.com",
+          "password": "motdepasse10",
+          "first_name": "Liam",
+          "last_name": "Jackson",
+          "phone_number": "8887776666",
+          "address": "707 Avenue des Plaines",
+          "postal_code": "75010",
+          "registered_credit_card": "1234567891234567"
+        }
+    ],
+
+    "order_order": [
+        {
+           "order_id": 1,
+           "order_date": "2021-01-01",
+           "delivery_date": "2021-01-03",
+           "delivery_option": "Express",
+           "delivery_address": "123 Rue des Fleurs",
+           "delivery_postal_code": "75001",
+           "status": "Delivered",
+           "total_price": 10.70,
+           "credit_card": "1234567891234567",
+           "email_id": "john.doe@email.com"
+        },
+        {
+           "order_id": 2,
+           "order_date": "2023-01-01",
+           "delivery_date": "2023-01-05",
+           "delivery_option": "Standard",
+           "delivery_address": "123 Rue des Fleurs",
+           "delivery_postal_code": "75001",
+           "status": "Delivered",
+           "total_price": 14.32,
+           "credit_card": "1234567891234567",
+           "email_id": "john.doe@email.com"
+        },
+        {
+           "order_id": 3,
+           "order_date": "2022-04-28",
+           "delivery_date": "2022-04-30",
+           "delivery_option": "Standard",
+           "delivery_address": "456 Avenue des Étoiles",
+           "delivery_postal_code": "75002",
+           "status": "Delivered",
+           "total_price": 12.50,
+           "credit_card": "1234567891234567",
+           "email_id": "jane.smith@email.com"
+        },
+        {
+           "order_id": 4,
+           "order_date": "2022-10-13",
+           "delivery_date": "2022-10-17",
+           "delivery_option": "Standard",
+           "delivery_address": "456 Avenue des Étoiles",
+           "delivery_postal_code": "75002",
+           "status": "Delivered",
+           "total_price": 34.12,
+           "credit_card": "1234567891234567",
+           "email_id": "jane.smith@email.com"
+        },
+        {
+           "order_id": 5,
+           "order_date": "2021-12-24",
+           "delivery_date": "2021-12-26",
+           "delivery_option": "Express",
+           "delivery_address": "1010 Rue de la Lune",
+           "delivery_postal_code": "75004",
+           "status": "Delivered",
+           "total_price": 15.00,
+           "credit_card": "1234567891234567",
+           "email_id": "bob.williams@email.com"
+        },
+        {
+           "order_id": 6,
+           "order_date": "2023-10-21",
+           "delivery_date": "2023-10-25",
+           "delivery_option": "Standard",
+           "delivery_address": "2020 Avenue des Nuages",
+           "delivery_postal_code": "75005",
+           "status": "Delivered",
+           "total_price": 9.89,
+           "credit_card": "1234567891234567",
+           "email_id": "emma.martin@email.com"
+        },
+        {
+           "order_id": 7,
+           "order_date": "2022-11-11",
+           "delivery_date": "2022-11-13",
+           "delivery_option": "Standard",
+           "delivery_address": "303 Rue des Montagnes",
+           "delivery_postal_code": "75006",
+           "status": "Cancelled",
+           "total_price": 8.99,
+           "credit_card": "1234567891234567",
+           "email_id": "charlie.brown@email.com"
+        },
+        {
+           "order_id": 8,
+           "order_date": "2022-12-12",
+           "delivery_date": "2022-12-14",
+           "delivery_option": "Standard",
+           "delivery_address": "404 Avenue des Rivières",
+           "delivery_postal_code": "75007",
+           "status": "Delivered",
+           "total_price": 7.99,
+           "credit_card": "1234567891234567",
+           "email_id": "olivia.white@email.com"
+        },
+        {
+           "order_id": 9,
+           "order_date": "2023-05-15",
+           "delivery_date": "2023-05-20",
+           "delivery_option": "Standard",
+           "delivery_address": "404 Avenue des Rivières",
+           "delivery_postal_code": "75007",
+           "status": "Delivered",
+           "total_price": 39.47,
+           "credit_card": "1234567891234567",
+           "email_id": "olivia.white@email.com"
+        },
+        {
+           "order_id": 10,
+           "order_date": "2023-06-16",
+           "delivery_date": "2023-06-18",
+           "delivery_option": "Standard",
+           "delivery_address": "505 Boulevard des Forêts",
+           "delivery_postal_code": "75008",
+           "status": "Cancelled",
+           "total_price": 12.50,
+           "credit_card": "1234567891234567",
+           "email_id": "michael.davis@email.com"
+        },
+        {
+           "order_id": 11,
+           "order_date": "2023-07-17",
+           "delivery_date": "2023-07-19",
+           "delivery_option": "Express",
+           "delivery_address": "606 Rue des Champs",
+           "delivery_postal_code": "75009",
+           "status": "Delivered",
+           "total_price": 21.01,
+           "credit_card": "1234567891234567",
+           "email_id": "sophia.thomas@email.com"
+        },
+        {
+           "order_id": 12,
+           "order_date": "2023-08-18",
+           "delivery_date": "2023-08-20",
+           "delivery_option": "Standard",
+           "delivery_address": "707 Avenue des Plaines",
+           "delivery_postal_code": "75010",
+           "status": "Delivered",
+           "total_price": 10.00,
+           "credit_card": "1234567891234567",
+           "email_id": "liam.jackson@email.com"
+        }
+    ],
+
+    "order_product": [
+        {"product_id": 1},
+        {"product_id": 2},
+        {"product_id": 3},
+        {"product_id": 4},
+        {"product_id": 5},
+        {"product_id": 6},
+        {"product_id": 7},
+        {"product_id": 8},
+        {"product_id": 9},
+        {"product_id": 10},
+        {"product_id": 11},
+        {"product_id": 12},
+        {"product_id": 13},
+        {"product_id": 14},
+        {"product_id": 15},
+        {"product_id": 16},
+        {"product_id": 17},
+        {"product_id": 18},
+        {"product_id": 19},
+        {"product_id": 20}
+    ],
+
+    "order_fruit": [
+        {"fruit_id": 1, "name": "Apple", "price": 1.99, "origin": "France", "product_id": 1},
+        {"fruit_id": 2, "name": "Banana", "price": 1.99, "origin": "Spain", "product_id": 2},
+        {"fruit_id": 3, "name": "Orange", "price": 1.64, "origin": "Italy", "product_id": 3},
+        {"fruit_id": 4, "name": "Pear", "price": 2.69, "origin": "France", "product_id": 4},
+        {"fruit_id": 5, "name": "Pineapple", "price": 3.99, "origin": "Spain", "product_id": 5},
+        {"fruit_id": 6, "name": "Strawberry", "price": 4.58, "origin": "Italy", "product_id": 6},
+        {"fruit_id": 7, "name": "Cherry", "price": 11.99, "origin": "France", "product_id": 7},
+        {"fruit_id": 8, "name": "Grape", "price": 6.00, "origin": "Spain", "product_id": 8},
+        {"fruit_id": 9, "name": "Lemon", "price": 2.98, "origin": "Italy", "product_id": 9},
+        {"fruit_id": 10, "name": "Watermelon", "price": 4.79, "origin": "France", "product_id": 10},
+        {"fruit_id": 11, "name": "Kiwi", "price": 2.99, "origin": "Spain", "product_id": 11},
+        {"fruit_id": 12, "name": "Peach", "price": 2.99, "origin": "Italy", "product_id": 12}
+    ],
+
+    "order_vegetable": [
+        {"vegetable_id": 1, "name": "Carrot", "price": 1.39, "origin": "France", "product_id": 13},
+        {"vegetable_id": 2, "name": "Cucumber", "price": 1.69, "origin": "Spain", "product_id": 14},
+        {"vegetable_id": 3, "name": "Tomato", "price": 1.00, "origin": "Italy", "product_id": 15},
+        {"vegetable_id": 4, "name": "Potato", "price": 0.99, "origin": "France", "product_id": 16},
+        {"vegetable_id": 5, "name": "Onion", "price": 2.69, "origin": "Spain", "product_id": 17},
+        {"vegetable_id": 6, "name": "Garlic", "price": 4.09, "origin": "Italy", "product_id": 18},
+        {"vegetable_id": 7, "name": "Pepper", "price": 3.99, "origin": "France", "product_id": 19},
+        {"vegetable_id": 8, "name": "Eggplant", "price": 4.58, "origin": "Spain", "product_id": 20}
+    ],
+
+    "order_orderdetail": [
+        {"orderdetail_id": 1, "order_id": 1, "product_id": 2, "quantity": 10},
+        {"orderdetail_id": 2, "order_id": 1, "product_id": 11, "quantity": 5},
+        {"orderdetail_id": 3, "order_id": 2, "product_id": 19, "quantity": 7},
+        {"orderdetail_id": 4, "order_id": 3, "product_id": 3, "quantity": 5},
+        {"orderdetail_id": 5, "order_id": 3, "product_id": 4, "quantity": 5},
+        {"orderdetail_id": 6, "order_id": 4, "product_id": 5, "quantity": 10},
+        {"orderdetail_id": 7, "order_id": 4, "product_id": 6, "quantity": 12},
+        {"orderdetail_id": 8, "order_id": 5, "product_id": 7, "quantity": 22},
+        {"orderdetail_id": 9, "order_id": 6, "product_id": 9, "quantity": 13},
+        {"orderdetail_id": 10, "order_id": 6, "product_id": 10, "quantity": 5},
+        {"orderdetail_id": 11, "order_id": 7, "product_id": 12, "quantity": 6},
+        {"orderdetail_id": 12, "order_id": 7, "product_id": 13, "quantity": 12},
+        {"orderdetail_id": 13, "order_id": 8, "product_id": 14, "quantity": 14},
+        {"orderdetail_id": 14, "order_id": 8, "product_id": 15, "quantity": 8},
+        {"orderdetail_id": 15, "order_id": 8, "product_id": 4, "quantity": 9},
+        {"orderdetail_id": 16, "order_id": 9, "product_id": 12, "quantity": 25},
+        {"orderdetail_id": 17, "order_id": 9, "product_id": 17, "quantity": 10},
+        {"orderdetail_id": 18, "order_id": 10, "product_id": 9, "quantity": 17},
+        {"orderdetail_id": 19, "order_id": 10, "product_id": 19, "quantity": 3},
+        {"orderdetail_id": 20, "order_id": 10, "product_id": 13, "quantity": 18},
+        {"orderdetail_id": 21, "order_id": 11, "product_id": 20, "quantity": 14},
+        {"orderdetail_id": 22, "order_id": 11, "product_id": 1, "quantity": 11},
+        {"orderdetail_id": 23, "order_id": 12, "product_id": 13, "quantity": 8},
+        {"orderdetail_id": 24, "order_id": 12, "product_id": 3, "quantity": 5},
+        {"orderdetail_id": 25, "order_id": 12, "product_id": 4, "quantity": 5}
+    ],
+
+    "order_warehouse": [
+        {"warehouse_id": 1, "address": "606 Rue des Champs", "postal_code": "75009", "zone": "North"},
+        {"warehouse_id": 2, "address": "707 Avenue des Plaines", "postal_code": "75010", "zone": "North"},
+        {"warehouse_id": 3, "address": "808 Boulevard des Vagues", "postal_code": "75011", "zone": "North"},
+        {"warehouse_id": 4, "address": "909 Rue des Collines", "postal_code": "75012", "zone": "East"},
+        {"warehouse_id": 5, "address": "1010 Avenue des Chênes", "postal_code": "75013", "zone": "South"},
+        {"warehouse_id": 6, "address": "1111 Boulevard des Rochers", "postal_code": "75014", "zone": "South"},
+        {"warehouse_id": 7, "address": "1212 Rue des Vallées", "postal_code": "75015", "zone": "West"}
+    ]
+}
