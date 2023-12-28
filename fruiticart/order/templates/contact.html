@@ -23,13 +23,13 @@
                 <form action="{% url 'contact' %}" method="post">
                     {% csrf_token %}
                     <label for="name">Your name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required maxlength="60">
 
                     <label for="email_contact">Your email:</label>
-                    <input type="email_contact" id="email_contact" name="email_contact" required>
+                    <input type="email" id="email_contact" name="email_contact" required maxlength="50">
 
                     <label for="message">Your message:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <textarea id="message" name="message" rows="4" required maxlength="500"></textarea>
 
                     {% if confirm %}
                     <p>{{ confirm }}</p>
