@@ -87,6 +87,7 @@
                                 <strong>Order date:</strong> {{ order.order_date }}<br>
                                 <strong>Status:</strong> {{ order.status }}<br>
                                 <strong>Total price:</strong> ${{ order.total_price }}<br>
+                                <button type="button" class="submit-button" onclick="window.location.href='{% url 'order_history' order.order_id %}'">Details of your order</button>
                             </div>
                             <br>
                         {% endfor %}

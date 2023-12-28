@@ -51,7 +51,7 @@ def order_infos(request):
         return response
 
 # function to calculate the total price of the order
-def calculate_total_price(cartItems):
+def calculate_total_price(cartItems, delivery_option):
     # initialize the total price
     total_price = 0
 
@@ -63,9 +63,14 @@ def calculate_total_price(cartItems):
 
         # calculate the total price
         total_price += product_price * quantity
+    
+    # add the delivery price
+    if delivery_option == 'Express':
+        total_price += 5
 
     return total_price
 
+# temporary route to create the order and then redirect to the order_confirmed page
 def confirm_order(request):
     if 'confirm' in request.POST:
         user_email = request.COOKIES.get('email', None)
@@ -83,7 +88,7 @@ def confirm_order(request):
         delivery_address = request.POST.get('delivery_address')
         delivery_postal_code = request.POST.get('delivery_postal_code')
         status = 'Pending'
-        total_price = calculate_total_price(cartItems)
+        total_price = calculate_total_price(cartItems, delivery_option)
         credit_card = request.POST.get('credit_card')
 
         # initialize the order id
@@ -125,6 +130,7 @@ def confirm_order(request):
         request.session['order_date'] = order_date_timestamp
 
         request.session['total_price'] = total_price
+        request.session['delivery_option'] = delivery_option
         request.session['cartItems'] = cartItems
 
         return redirect('order_confirmed', order_id)
@@ -139,9 +145,44 @@ def order_confirmed(request, order_id):
     stored_order_date_timestamp = request.session.get('order_date')
     order_date = datetime.datetime.fromtimestamp(stored_order_date_timestamp) if stored_order_date_timestamp else None
     total_price = request.session.get('total_price')
+    delivery_option = request.session.get('delivery_option')
     cartItems = request.session.get('cartItems')
 
-    return render(request, 'order_confirmed.html', {'user_email': user_email, 'order_id': order_id, 'order_date': order_date, 'total_price': total_price, 'cartItems': cartItems})
+    return render(request, 'order_confirmed.html', {'user_email': user_email, 'order_id': order_id, 'order_date': order_date, 'total_price': total_price, 'delivery_option': delivery_option, 'cartItems': cartItems})
+
+def order_history(request, order_id):
+    user_email = request.COOKIES.get('email', None)
+
+    # get the order infos via the model
+    order = Order.objects.get(order_id=order_id)
+    # get the order details via the model
+    order_details = OrderDetail.objects.filter(order_id=order_id)
+
+    # get the order date
+    order_date = order.order_date
+    # get the total price
+    total_price = order.total_price
+    # get the delivery option
+    delivery_option = order.delivery_option
+
+    # get the products infos
+    products = {}
+    for order_detail in order_details:
+        # get the product id
+        product_id = order_detail.product_id
+        # get the quantity
+        quantity = order_detail.quantity
+
+        # get the product infos
+        tmp = Fruit.objects.filter(product_id=product_id)
+        if not tmp:
+            tmp = Vegetable.objects.filter(product_id=product_id)
+        tmp = tmp[0]
+
+        # add the product to the list of products
+        products[product_id] = {'name': tmp.name, 'price': tmp.price, 'quantity': quantity}
+
+    return render(request, 'order_confirmed.html', {'user_email': user_email, 'order_id': order_id, 'order_date': order_date, 'total_price': total_price, 'delivery_option': delivery_option, 'cartItems': products})
 
 def login(request):
     if 'login_submit' in request.POST:

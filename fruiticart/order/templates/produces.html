@@ -23,6 +23,28 @@
             height: auto;
             margin-right: 8px;
         }
+
+        .grid-item {
+        width: calc(33.33% - 20px); /* 3 produits par ligne avec marge de 20px entre eux */
+        margin-bottom: 20px;
+    }
+
+    /* Ajoutez une classe pour gérer la disposition en grille dans la section */
+    .grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* Réinitialisez la marge à droite pour tous les éléments */
+    .grid-item {
+        margin-right: 20px;
+    }
+
+    /* Réinitialisez la marge à droite du dernier élément de chaque ligne */
+    .grid-item:nth-child(3n) {
+        margin-right: 0;
+    }
     </style>
 </head>
 
@@ -42,8 +64,9 @@
 
         <br></br>
         
+        <div class="grid-container">
         {% for product in products %}
-            <div class="product" id="{{ product.product_id }}">
+            <div class="product grid-item" id="{{ product.product_id }}">
                 <img src="{% static product.name|lower ~ %}.jpg" alt="{{ product.name|lower }}" />
                 <h2>{{ product.name }}</h2>
                 <p id="{{ product.name|lower }}-price">Price: {{ product.price }}$/kg</p>
@@ -51,6 +74,7 @@
                 <input type="number" id="{{ product.name|lower }}-quantity" class="quantity" value="0" min="0">
             </div>
         {% endfor %}
+        </div>
 
         <button class="submit-button" onclick="goToCart()">
             <img src="{% static 'cart_logo.jpeg' %}" alt="Cart Logo" class="cart-logo">

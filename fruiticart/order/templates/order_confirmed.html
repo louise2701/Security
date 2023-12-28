@@ -53,6 +53,9 @@
             </div>
     
             <hr>
+            {% if delivery_option %}
+                <p><strong>+ $5 for the express delivery option</p>
+            {% endif %}
             <p><strong>Total:</strong> ${{ total_price|floatformat:2 }}</p>
         </div>
     </section>
