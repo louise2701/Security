@@ -1,3 +1,5 @@
-# python files
-/fruiticart/fruiticart/__pycache__/
-/fruiticart/order/__pycache__/
+# ignore Python cache files
+__pycache__/
+
+# ignore all pycache directories
+**/__pycache__/

@@ -28,7 +28,7 @@
                     <input type="password" id="password" name="password" required maxlength="50">
 
                     <label for="phone_number">Phone number:</label>
-                    <input type="tel" id="phone_number" name="phone_number" required pattern="\d{10}" title="Please enter a 10-digit phone number">
+                    <input type="tel" id="phone_number" name="phone_number" required maxlength="10" pattern="\d{10}" title="Please enter a 10-digit phone number">
 
                     {% if error %}
                     <p class="error-message">{{ error }}</p>

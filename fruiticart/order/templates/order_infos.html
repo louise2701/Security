@@ -76,10 +76,10 @@
                 <input type="text" id="delivery_address" name="delivery_address" value="{{ user_info.address }}" required maxlength="50">
 
                 <label for="delivery_postal_code">Delivery postal code:</label>
-                <input type="text" id="delivery_postal_code" name="delivery_postal_code" value="{{ user_info.postal_code }}" required pattern="\d{5}" title="Please enter a 5-digit postal code number">
+                <input type="text" id="delivery_postal_code" name="delivery_postal_code" value="{{ user_info.postal_code }}" required maxlength="5" pattern="\d{5}" title="Please enter a 5-digit postal code number">
 
                 <label for="credit_card">Credit card:</label>
-                <input type="text" id="credit_card" name="credit_card" value="{{ user_info.registered_credit_card }}" required pattern="\d{16}" title="Please enter a 16-digit credit card number">
+                <input type="text" id="credit_card" name="credit_card" value="{{ user_info.registered_credit_card }}" required maxlength="16" pattern="\d{16}" title="Please enter a 16-digit credit card number">
 
                 <label for="delivery_option">Delivery options:</label>
                 <select id="delivery_option" name="delivery_option">

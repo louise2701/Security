@@ -126,9 +126,8 @@ def confirm_order(request):
         
         # convert the order date to timestamp
         order_date_timestamp = int(order_date.timestamp())
-        # store it
-        request.session['order_date'] = order_date_timestamp
 
+        request.session['order_date'] = order_date_timestamp
         request.session['total_price'] = total_price
         request.session['delivery_option'] = delivery_option
         request.session['cartItems'] = cartItems
@@ -145,7 +144,13 @@ def order_confirmed(request, order_id):
     stored_order_date_timestamp = request.session.get('order_date')
     order_date = datetime.datetime.fromtimestamp(stored_order_date_timestamp) if stored_order_date_timestamp else None
     total_price = request.session.get('total_price')
+
     delivery_option = request.session.get('delivery_option')
+    if delivery_option == 'Express':
+        delivery_option = True
+    else:
+        delivery_option = None
+
     cartItems = request.session.get('cartItems')
 
     return render(request, 'order_confirmed.html', {'user_email': user_email, 'order_id': order_id, 'order_date': order_date, 'total_price': total_price, 'delivery_option': delivery_option, 'cartItems': cartItems})
@@ -164,6 +169,11 @@ def order_history(request, order_id):
     total_price = order.total_price
     # get the delivery option
     delivery_option = order.delivery_option
+
+    if delivery_option == 'Express':
+        delivery_option = True
+    else:
+        delivery_option = None
 
     # get the products infos
     products = {}

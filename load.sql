@@ -15,17 +15,17 @@ INSERT INTO `order_client` (email, `password`, first_name, last_name, phone_numb
 ('liam.jackson@email.com', 'motdepasse10', 'Liam', 'Jackson', '8887776666', '707 Avenue des Plaines', '75010', '1234567891234567');
 
 INSERT INTO `order_order` (order_id, order_date, delivery_date, delivery_option, delivery_address, delivery_postal_code, `status`, total_price, credit_card, email_id) VALUES 
-(1, '2021-01-01', '2021-01-03', 'Express', '123 Rue des Fleurs', '75001', 'Delivered', 10.70, '1234567891234567', 'john.doe@email.com'),
+(1, '2021-01-01', '2021-01-03', 'Express', '123 Rue des Fleurs', '75001', 'Delivered', 15.70, '1234567891234567', 'john.doe@email.com'),
 (2, '2023-01-01', '2023-01-05', 'Standard', '123 Rue des Fleurs', '75001', 'Delivered', 14.32, '1234567891234567', 'john.doe@email.com'),
 (3, '2022-04-28', '2022-04-30', 'Standard', '456 Avenue des Étoiles', '75002', 'Delivered', 12.50, '1234567891234567', 'jane.smith@email.com'),
 (4, '2022-10-13', '2022-10-17', 'Standard', '456 Avenue des Étoiles', '75002', 'Delivered', 34.12, '1234567891234567', 'jane.smith@email.com'),
-(5, '2021-12-24', '2021-12-26', 'Express', '1010 Rue de la Lune', '75004', 'Delivered', 15.00, '1234567891234567', 'bob.williams@email.com'),
+(5, '2021-12-24', '2021-12-26', 'Express', '1010 Rue de la Lune', '75004', 'Delivered', 20.00, '1234567891234567', 'bob.williams@email.com'),
 (6, '2023-10-21', '2023-10-25', 'Standard', '2020 Avenue des Nuages', '75005', 'Delivered', 9.89, '1234567891234567', 'emma.martin@email.com'),
 (7, '2022-11-11', '2022-11-13', 'Standard', '303 Rue des Montagnes', '75006', 'Cancelled', 8.99, '1234567891234567', 'charlie.brown@email.com'),
 (8, '2022-12-12', '2022-12-14', 'Standard', '404 Avenue des Rivières', '75007', 'Delivered', 7.99, '1234567891234567', 'olivia.white@email.com'),
 (9, '2023-05-15', '2023-05-20', 'Standard', '404 Avenue des Rivières', '75007', 'Delivered', 39.47, '1234567891234567', 'olivia.white@email.com'),
 (10, '2023-06-16', '2023-06-18', 'Standard', '505 Boulevard des Forêts', '75008', 'Cancelled', 12.50, '1234567891234567', 'michael.davis@email.com'),
-(11, '2023-07-17', '2023-07-19', 'Express', '606 Rue des Champs', '75009', 'Delivered', 21.01, '1234567891234567', 'sophia.thomas@email.com'),
+(11, '2023-07-17', '2023-07-19', 'Express', '606 Rue des Champs', '75009', 'Delivered', 26.01, '1234567891234567', 'sophia.thomas@email.com'),
 (12, '2023-08-18', '2023-08-20', 'Standard', '707 Avenue des Plaines', '75010', 'Delivered', 10.00, '1234567891234567', 'liam.jackson@email.com');
 
 INSERT INTO order_product (product_id) VALUES 

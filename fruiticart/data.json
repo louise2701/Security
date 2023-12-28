@@ -121,7 +121,7 @@
            "delivery_address": "123 Rue des Fleurs",
            "delivery_postal_code": "75001",
            "status": "Delivered",
-           "total_price": 10.70,
+           "total_price": 15.70,
            "credit_card": "1234567891234567",
            "email_id": "john.doe@email.com"
         },
@@ -169,7 +169,7 @@
            "delivery_address": "1010 Rue de la Lune",
            "delivery_postal_code": "75004",
            "status": "Delivered",
-           "total_price": 15.00,
+           "total_price": 20.00,
            "credit_card": "1234567891234567",
            "email_id": "bob.williams@email.com"
         },
@@ -241,7 +241,7 @@
            "delivery_address": "606 Rue des Champs",
            "delivery_postal_code": "75009",
            "status": "Delivered",
-           "total_price": 21.01,
+           "total_price": 26.01,
            "credit_card": "1234567891234567",
            "email_id": "sophia.thomas@email.com"
         },
