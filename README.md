@@ -8,9 +8,10 @@ You will find the following directories/files:
 - `catalog.pdf`: contains the catalog of the products for our website
 - `demo_video.mp4`: contains the demo video of our application
 - `diagram.mdj`: contains the diagram of our database
-- `init.sql` and `load.sql`: contains the SQL script to initialize the database
+- `init.sql` and `load.sql`: contain the SQL scripts to initialize the database
 - `presentation.pdf`: contains the presentation of our project (done on 18/12/2023)
 - `README.md`: this file
+- `report.pdf`: contains the report of our project
 
 ## Setup
 
