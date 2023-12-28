@@ -25,6 +25,9 @@ To run the application, you need to run the following commands, **in the first `
 - `python manage.py load_data`
 - `python manage.py runserver`
 
+Here an image of the commands to run, with the expected output:
+![commands](captures/how_to_run.png)
+
 Then, you can access the application at the following address: `http://127.0.0.1:8000/order/home` (in function of the port used by the server).
 
 ## How to use the application
