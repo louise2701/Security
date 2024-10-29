@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Awareness Project</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333; /* Dark gray text */
+        }
+
+        header {
+            background-color: #404040; /* Dark gray header */
+            color: white;
+            padding: 3em 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 3em;
+            text-align: center;
+            background-color: #fff; /* White background for sections */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            margin: 2em auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .welcome {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto 1.5em;
+            text-align: left; /* Align text to the left for better readability */
+        }
+
+        .welcome p {
+            margin-bottom: 1em; /* Add space between paragraphs */
+        }
+
+        .submit-button {
+            background-color: #ff7f50; /* Orange button */
+            color: white;
+            padding: 1em 2.5em;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #ff5722; /* Darker orange on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        footer {
+            background-color: #404040; /* Dark gray footer */
+            color: white;
+            padding: 2em;
+            text-align: center;
+            margin-top: 2em;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #ff7f50;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #ff5722;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            section {
+                padding: 2em;
+            }
+
+            .submit-button {
+                padding: 1em 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    
+    <header>
+        <h1>Security Use Case Project: Raising Awareness and Solutions</h1>
+        <p>Join our mission to address the humanitarian and technical challenges of demining operations.</p>
+    </header>
+
+    <section>
+        <div class="welcome">
+            <p>Welcome to the Security Awareness! Our Project: Innovating for a Safer World!</p>
+
+            <p>We are a team of engineering students working on an innovative project aimed at developing cutting-edge technologies for demining. Our goal is to create a prototype capable of detecting landmines and unexploded ordnance, contributing to safer environments in regions affected by these hidden dangers.</p>
+
+            <p>Through this project, we also aim to raise awareness about the technical and humanitarian challenges surrounding demining. Follow our journey as we combine technology, research, and innovation to make the world a safer place.</p>
+        </div>
+        <button class="submit-button" id="order_button">Go to project</button>
+    </section>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+
+    <script>
+        var orderButton = document.getElementById('order_button');
+        orderButton.addEventListener('click', function() {
+            window.location.href = '/order/project/';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Overview</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333; /* Dark gray text */
+        }
+
+        header {
+            background-color: #404040; /* Dark gray header */
+            color: white;
+            padding: 3em 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 3em;
+            background-color: #fff; /* White background for sections */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            margin: 2em auto;
+            max-width: 900px;
+            border-radius: 8px;
+            text-align: center; /* Center-align text in the section */
+        }
+
+        img {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease; /* Add hover effect */
+        }
+
+        img:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        .project {
+            margin-bottom: 20px;
+        }
+
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .grid-item {
+            width: calc(33.33% - 20px); /* 3 projects per row with a margin of 20px */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .grid-item:nth-child(3n) {
+            margin-right: 0; /* No margin on the last item of each row */
+        }
+
+        footer {
+            background-color: #404040; /* Dark gray footer */
+            color: white;
+            padding: 2em;
+            text-align: center;
+            margin-top: 2em;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #ff7f50;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #ff5722;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            section {
+                padding: 2em;
+            }
+
+            .grid-item {
+                width: calc(50% - 10px); /* 2 projects per row on smaller screens */
+            }
+
+            .grid-item:nth-child(2n) {
+                margin-right: 0; /* No margin on the last item of each row */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <header>
+        <h1>Project Overview</h1>
+        <p>Select a project to view its details</p>
+    </header>
+
+    <section>
+        <div class="grid-container">
+            <div class="project grid-item">
+                <a href="{% url 'project_history' %}"> <!-- Link to Project History page -->
+                    <img src="{% static 'history.jpg' %}" alt="Project History" />
+                    <h2>Project History</h2>
+                </a>
+            </div>
+
+            <div class="project grid-item">
+                <a href="{% url 'project_cartography' %}"> <!-- Link to Project Cartography page -->
+                    <img src="{% static 'map.jpg' %}" alt="Project Cartography" />
+                    <h2>Project Cartography</h2>
+                </a>
+            </div>
+
+
+            <!-- Add more projects as needed -->
+        </div>
+    </section>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+
+</html>

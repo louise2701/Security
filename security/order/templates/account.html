@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <style>
+        /* Styling adjustments for the Account page */
+        header {
+            background-color: #333; /* Dark gray background */
+            color: white;
+            padding: 2em 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        section {
+            padding: 2em;
+            background-color: #f5f5f5; /* Light gray background for sections */
+        }
+
+        .user-info-form {
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2em;
+            max-width: 600px;
+            margin: 0 auto 2em auto; /* Center the forms */
+        }
+
+        label {
+            display: block;
+            margin-top: 1em;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75em;
+            margin-top: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1em;
+        }
+
+        .submit-button {
+            background-color: #ff7f50; /* Orange button color */
+            color: white;
+            padding: 0.75em 1.5em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            font-size: 1.1em;
+        }
+
+        .submit-button:hover {
+            background-color: #ff5722; /* Darker orange on hover */
+        }
+
+        .order-history {
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .order-history div {
+            background-color: #f5f5f5;
+            padding: 1em;
+            border-radius: 8px;
+            margin-bottom: 1em;
+        }
+
+        .order-history strong {
+            font-weight: bold;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 1em;
+            font-size: 0.9em;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-top: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <main>
+        <header>
+            <h1>Account</h1>
+        </header>
+
+        <section>
+            <!-- Modify User Information Form -->
+            <div class="user-info-form">
+                <h2>Modify User Information</h2>
+                <form action="{% url 'account' %}" method="post">
+                    {% csrf_token %}
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" value="{{ user_info.email }}" readonly style="background-color: #f0f0f0;">
+
+                    <label for="first_name">First Name:</label>
+                    <input type="text" id="first_name" name="first_name" value="{{ user_info.first_name }}" maxlength="30">
+
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" id="last_name" name="last_name" value="{{ user_info.last_name }}" maxlength="30">
+
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="tel" id="phone_number" name="phone_number" value="{{ user_info.phone_number }}" required maxlength="10" pattern="\d{10}" title="Please enter a 10-digit phone number">
+
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" value="{{ user_info.address }}" maxlength="50">
+
+                    <label for="postal_code">Postal Code:</label>
+                    <input type="text" id="postal_code" name="postal_code" value="{{ user_info.postal_code }}" maxlength="5" pattern="\d{5}" title="Please enter a 5-digit postal code">
+
+                    <label for="credit_card">Favorite Credit Card:</label>
+                    <input type="text" id="credit_card" name="credit_card" value="{{ user_info.registered_credit_card }}" maxlength="16" pattern="\d{16}" title="Please enter a 16-digit credit card number">
+
+                    {% if confirm_info %}
+                        <p>{{ confirm_info }}</p>
+                    {% endif %}
+
+                    <button type="submit" name="modify_user_info" class="submit-button">Modify</button>
+                </form>
+            </div>
+
+            <!-- Change Password Form -->
+            <div class="user-info-form">
+                <h2>Change Password</h2>
+                <form action="{% url 'account' %}" method="post">
+                    {% csrf_token %}
+                    <label for="old_password">Old Password:</label>
+                    <input type="password" id="old_password" name="old_password" required maxlength="50">
+
+                    <label for="new_password">New Password:</label>
+                    <input type="password" id="new_password" name="new_password" required maxlength="50">
+
+                    <label for="confirm_new_password">Confirm New Password:</label>
+                    <input type="password" id="confirm_new_password" name="confirm_new_password" required maxlength="50">
+
+                    {% if error_password %}
+                        <p class="error-message">{{ error_password }}</p>
+                    {% endif %}
+
+                    {% if confirm_password %}
+                        <p>{{ confirm }}</p>
+                    {% endif %}
+
+                    <button type="submit" name="change_password" class="submit-button">Change</button>
+                </form>
+            </div>
+
+            <!-- Order History Section -->
+            <div class="order-history">
+                <h2>Order History</h2>
+                {% if user_orders %}
+                    <div>
+                        {% for order in user_orders %}
+                            <div>
+                                <strong>Order ID:</strong> {{ order.order_id }}<br>
+                                <strong>Order Date:</strong> {{ order.order_date }}<br>
+                                <strong>Status:</strong> {{ order.status }}<br>
+                                <strong>Total Price:</strong> ${{ order.total_price }}<br>
+                                <button type="button" class="submit-button" onclick="window.location.href='{% url 'order_history' order.order_id %}'">Details of Your Order</button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>No previous orders found.</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+
+</html>

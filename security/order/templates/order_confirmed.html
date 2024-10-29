@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5; /* Light gray background for the page */
+        }
+
+        header {
+            background-color: #333; /* Dark gray background */
+            color: white;
+            padding: 2em 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin-top: 0.5em;
+            font-size: 1.2em;
+        }
+
+        .order-summary {
+            background-color: white; /* White background for order summary */
+            padding: 2em;
+            margin: 2em auto;
+            border-radius: 8px;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #333;
+        }
+
+        .order-summary p {
+            font-size: 1.1em;
+            margin: 0.5em 0;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5em;
+        }
+
+        .order-item img {
+            width: 120px;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 1.5em;
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-details p {
+            margin: 0.3em 0;
+        }
+
+        hr {
+            margin: 1.5em 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        .total-price {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .submit-button {
+            background-color: #ff7f50; /* Orange button */
+            color: white;
+            padding: 0.75em 1.5em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #ff5722; /* Darker orange on hover */
+        }
+
+        footer {
+            padding: 2em 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .order-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .order-item img {
+                margin-bottom: 1em;
+            }
+
+            .order-summary {
+                padding: 1.5em;
+                margin: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <header>
+        <h1>Order Confirmed!</h1>
+        <p>Here's a recap for your order</p>
+    </header>
+
+    <section>
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <p><strong>Email:</strong> {{ user_email }}</p>
+            <p><strong>Order ID:</strong> {{ order_id }}</p>
+            <p><strong>Order Date:</strong> {{ order_date }}</p>
+            <hr>
+    
+            <div class="order-items">
+                {% for item_id, item in cartItems.items %}
+                    <div class="order-item">
+                        <img class="product-image" src="{% static item.name ~ %}.jpg" alt="{{ item.name }}" />
+                        <div class="product-details">
+                            <p><strong>{{ item.name }}</strong></p>
+                            <p>Quantity: {{ item.quantity }}</p>
+                            <p>Price per unit: ${{ item.price }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    
+            <hr>
+            {% if delivery_option %}
+                <p><strong>+ $5 for the express delivery option</strong></p>
+            {% endif %}
+            <p class="total-price"><strong>Total:</strong> ${{ total_price|floatformat:2 }}</p>
+        </div>
+    </section>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+
+</html>

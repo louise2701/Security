@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} - Product Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    
+    <header>
+        <h1>{{ name }}</h1>
+    </header>
+
+    <section>
+        <img src="{% static name|lower ~ %}.jpg" alt="{{ name|lower }}" style="width: 300px; height: auto; border-radius: 8px;" />
+        <p>Price: {{ price }}$/kg</p>
+        <!-- Add more product details here -->
+    </section>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+
+</html>

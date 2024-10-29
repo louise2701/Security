@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Land Mines</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333; /* Dark gray text */
+        }
+
+        header {
+            background-color: #404040; /* Dark gray header */
+            color: white;
+            padding: 3em 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 3em;
+            background-color: #fff; /* White background for sections */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            margin: 2em auto;
+            max-width: 900px;
+            border-radius: 8px;
+            line-height: 1.6; /* Improve readability */
+        }
+
+        section h2 {
+            margin-top: 1.5em;
+            font-size: 1.8em;
+            color: #404040; /* Dark gray for section headings */
+        }
+
+        section p {
+            margin: 0.5em 0;
+        }
+
+        footer {
+            background-color: #404040; /* Dark gray footer */
+            color: white;
+            padding: 2em;
+            text-align: center;
+            margin-top: 2em;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #ff7f50;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #ff5722;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            section {
+                padding: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <header>
+        <h1>History of Land Mines</h1>
+        <p>Explore the development and impact of land mines throughout history.</p>
+    </header>
+
+    <section>
+        <h2>Introduction</h2>
+        <p>The origins of land mines can be traced back to ancient warfare, where various forms of traps were used. Over time, the technology evolved, particularly during the World Wars, leading to the modern mines we see today.</p>
+
+        <h2>Early Development</h2>
+        <p>The first land mines were developed during the 19th century for use against combat vehicles. Between 1918 and 1939, the development and use of anti-personnel mines became a priority for military strategists.</p>
+        
+        <h2>World Wars</h2>
+        <p>During World War I, the initial use of anti-tank mines began, but anti-personnel mines were not widely used. In contrast, World War II saw a dramatic increase in the deployment of land mines, with over 300 million anti-tank mines laid, especially by the Soviet Union.</p>
+
+        <h2>Cold War and Beyond</h2>
+        <p>In the Cold War era, NATO countries planned extensive minefields against the threat of armored attacks. New types of mines were developed, including scatterable mines.</p>
+        
+        <h2>Humanitarian Impact</h2>
+        <p>Land mines have devastating effects long after conflicts end, with many civilian casualties resulting from poorly documented and unmarked minefields.</p>
+        
+        <h2>Ottawa Treaty</h2>
+        <p>The Ottawa Treaty, signed in 1997, aimed to eliminate the use of anti-personnel mines worldwide, representing a significant step toward global disarmament.</p>
+
+        <h2>Modern Challenges</h2>
+        <p>Despite efforts to ban land mines, their usage continues in various conflicts, posing ongoing challenges for humanitarian organizations focused on demining efforts.</p>
+        
+        <h2>Conclusion</h2>
+        <p>The history of land mines is marked by innovation and tragedy, emphasizing the need for continued advocacy for their prohibition and the safety of affected communities.</p>
+    </section>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+
+</html>

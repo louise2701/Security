@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/navbar_footer.css' %}">
+    <style>
+        footer {
+            background-color: #404040; /* Dark gray background */
+            color: white;
+            padding: 1.5em 0; /* Vertical padding */
+            text-align: center;
+            font-size: 1em;
+        }
+
+        footer .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px; /* Gap between text and links */
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1.1em;
+            white-space: nowrap; /* Keep text in one line */
+        }
+
+        footer a {
+            color: #ff7f50; /* Orange links */
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        footer a:hover {
+            color: #ff5722; /* Darker orange on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Security Use Case Project</p>
+            <a href="{% url 'contact' %}">Contact Us</a>
+            <a href="https://www.instagram.com" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+</body>
+
+</html>
